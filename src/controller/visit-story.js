@@ -3,10 +3,6 @@ class VisitStory {
     this._storage = storage;
   }
 
-  get(story) {
-    return this._storage.getVisitedStory(story);
-  }
-
   post(story) {
     this._storage.logEvent({
       type: 'VISIT_STORY',
