@@ -1,0 +1,17 @@
+{
+  "name": "journey-client-api",
+  "version": "1.0.0",
+  "description": "Client objects for Journey",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Project Magnet Team <magnet@mozilla.com>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "mocha": "^3.2.0",
+    "react-native": "^0.40.0",
+    "realm": "^0.15.4",
+    "uuid": "^3.0.1"
+  }
+}
