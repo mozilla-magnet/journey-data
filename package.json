@@ -1,5 +1,5 @@
 {
-  "name": "journey-client-api",
+  "name": "journey-data",
   "version": "1.0.0",
   "description": "Client objects for Journey",
   "main": "src/index.js",
