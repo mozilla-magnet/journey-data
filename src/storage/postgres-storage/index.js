@@ -1,9 +1,11 @@
 const connectionConfig = require('./knexfile');
-const path = require('path');
 
+// Must be a Node JS environment
+let path;
 let knex;
 try {
   knex = require('knex');
+  path = require('path');
 } catch(e) {
   knex = function() { throw new Error('Knex not installed as peer dependency'); };
 }
