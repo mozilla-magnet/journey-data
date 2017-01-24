@@ -1,4 +1,4 @@
-const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
+const resolveAssetSource = require('../util/resolve-asset-source');
 const createModel = require('../util/model-create');
 const { Story, User } = require('../model');
 

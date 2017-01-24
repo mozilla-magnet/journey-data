@@ -1,4 +1,13 @@
-const Realm = require('realm');
+let Realm;
+
+try {
+  Realm = require('realm');
+} catch(e) {
+  console.log('Realm not installed... RealmStorage unavailable');
+  module.exports = function() {};
+  return;
+}
+
 const { Story, User, Event }  = require('../model');
 const uuidv4 = require('uuid/v4');
 
