@@ -3,14 +3,14 @@ class LikeStory {
     this._storage = storage;
   }
 
-  post({ story }) {
+  post(story) {
     this._storage.logEvent({
       type: 'LIKE_STORY',
       storyId: story.id
     });
   }
 
-  delete({ story }) {
+  delete(story) {
     this._storage.logEvent({
       type: 'UNLIKE_STORY',
       storyId: story.id

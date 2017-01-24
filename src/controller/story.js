@@ -3,7 +3,7 @@ class Story {
     this._storage = storage;
   }
 
-  get({ story }) {
+  get(story) {
     return this._storage.fetchStory(story.id);
   }
 }

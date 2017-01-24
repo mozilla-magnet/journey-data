@@ -26,11 +26,11 @@ Available API methods.
 journeyData.getClosestPopularStories({ currentLocation, radius })
 journeyData.getClosestStories({ currentLocation, radius })
 journeyData.getNewestStories()
-journeyData.likeStory({ story: { id } })
-journeyData.deleteLikeStory({ story: { id } })
-journeyData.visitStory({ story: { id } })
-journeyData.deleteVisitStory({ story: { id } })
-journeyData.getStory({ story: { id }});
+journeyData.likeStory({ id })
+journeyData.deleteLikeStory({ id })
+journeyData.visitStory({ id })
+journeyData.deleteVisitStory({ id })
+journeyData.getStory({ id });
 ```
 
 TODO: Use `RealmStorage`, migrations
