@@ -36,7 +36,7 @@ class MockStorage {
         visits: 290,
         latitude: 51.5087624,
         longitude: -0.1011677,
-        imageUri: resolveAssetSource(require('../mockdata/images/dank.jpg')),
+        imageUri: resolveAssetSource(require('../mockdata/images/dank.jpg')).uri,
         audioUri: '',
         fetchedTime: Date.now(),
         liked: false,
