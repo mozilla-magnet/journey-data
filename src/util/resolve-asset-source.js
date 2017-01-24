@@ -1,12 +1,15 @@
-let resolveAssetSource;
-
+let resolveAsset;
 try {
-  resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
+  const resolveAssetSource =  require('react-native/Libraries/Image/resolveAssetSource');
+
+  resolveAsset = function(path) {
+    return resolveAssetSource(require(path));
+  };
+
 } catch(e) {
-  resolveAssetSource = function(source) {
-    // TODO: Resolve to a static file endpoint on this server
-    return 'https://example.com';
+  resolveAsset = function(path) {
+    return { uri: path };
   };
 }
 
-module.exports = resolveAssetSource;
+module.exports = resolveAsset;
