@@ -8,11 +8,11 @@ class RealmStorage {
   }
 
   fetchStory(id) {
-    return this._realm.objects('Story').filtered(`id == ${Number(id)}`)[0];
+    return Promise.resolve(this._realm.objects('Story').filtered(`id == ${Number(id)}`)[0]);
   }
 
   fetchNewestStories(limit) {
-    return this.fetchStories(limit).sorted('timeCreated');
+    return this.fetchStories(limit).then(results => results.sorted('timeCreated'));
   }
 
   fetchNearestStories(currentLocation, radius, limit) {
@@ -22,11 +22,11 @@ class RealmStorage {
   fetchPopularStoriesInLocation(currentLocation, radius, limit) {
     return
       this.fetchNearestStories(currentLocation, radius, limit)
-          .sorted('visits');
+        .then(results => results.sorted('visits'));
   }
 
   fetchStories(limit) {
-    return this._realm.objects('Story');
+    return Promise.resolve(this._realm.objects('Story'));
   }
 
   syncNearbyStoriesFromApi(position, radius) {
@@ -52,10 +52,6 @@ class RealmStorage {
         fetchedTime: Date.now(),
       }, true);
     });
-  }
-
-  hasVisitedStory() {
-    fetchEvents();
   }
 
   fetchEvents() {

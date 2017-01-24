@@ -3,9 +3,8 @@ const createModel = require('../util/model-create');
 const { Story, User } = require('../model');
 
 class MockStorage {
-
   fetchStory(id) {
-    return fetchStories()[0];
+    return this.fetchStories().then(stories => stories[0]);
   }
 
   fetchNewestStories(limit) {
@@ -21,7 +20,7 @@ class MockStorage {
   }
 
   fetchStories(limit) {
-    return [
+    return Promise.resolve([
       createModel(Story, {
         id: 1,
         url: '',
@@ -43,7 +42,7 @@ class MockStorage {
         liked: false,
         visited: false,
       })
-    ];
+    ]);
   }
 
   fetchEvents() { return []; }
