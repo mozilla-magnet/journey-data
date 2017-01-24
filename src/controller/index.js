@@ -3,6 +3,7 @@ const ClosestStories = require('./closest-stories');
 const LikeStory = require('./like-story');
 const NewestStories = require('./newest-stories');
 const VisitStory = require('./visit-story');
+const Story = require('./story');
 
 module.exports = {
   ClosestPopularStories,
@@ -10,4 +11,5 @@ module.exports = {
   LikeStory,
   NewestStories,
   VisitStory,
+  Story,
 };

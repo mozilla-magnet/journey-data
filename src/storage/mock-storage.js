@@ -3,6 +3,11 @@ const createModel = require('../util/model-create');
 const { Story, User } = require('../model');
 
 class MockStorage {
+
+  fetchStory(id) {
+    return fetchStories()[0];
+  }
+
   fetchNewestStories(limit) {
     return this.fetchStories();
   }

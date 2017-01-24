@@ -7,6 +7,10 @@ class RealmStorage {
     this._realm = new Realm({ schema: [ Story.schema, User.schema, Event.schema ] });
   }
 
+  fetchStory(id) {
+    return this._realm.objects('Story').filtered(`id == ${Number(id)}`)[0];
+  }
+
   fetchNewestStories(limit) {
     return this.fetchStories(limit).sorted('timeCreated');
   }
