@@ -8,10 +8,12 @@
   },
   "author": "Project Magnet Team <magnet@mozilla.com>",
   "license": "MPL-2.0",
+  "peerDependencies": {
+    "realm": "^0.15.4"
+  },
   "dependencies": {
     "mocha": "^3.2.0",
     "react-native": "^0.40.0",
-    "realm": "^0.15.4",
     "uuid": "^3.0.1"
   }
 }
