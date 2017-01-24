@@ -1,10 +1,17 @@
 const connectionConfig = require('./knexfile');
-const knex = require('knex')(connectionConfig);
 const path = require('path');
+
+let knex;
+try {
+  knex = require('knex');
+} catch(e) {
+  knex = function() { throw new Error('Knex not installed as peer dependency'); };
+}
 
 class PostgresStorage {
   constructor() {
-    this._ready = knex.migrate.latest({
+    this._connection = knex(connectionConfig);
+    this._ready = this._connection.migrate.latest({
       directory: path.join(__dirname, 'migrations')
     });
   }
