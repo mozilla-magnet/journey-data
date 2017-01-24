@@ -49,3 +49,5 @@ class MockStorage {
   fetchEvents() { return []; }
   logEvent(event) {}
 }
+
+module.exports = MockStorage;
