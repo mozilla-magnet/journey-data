@@ -9,28 +9,28 @@ driver then interprets the commands into a result.
 # Quick Start
 
 ```
-import { Storage, Journey } from 'journey-data';
+import { Storage, JourneyData } from 'journey-data';
 
 const storage = new Storage.MockStorage();
 
-const journey = new Journey(storage);
+const journeyData = new JourneyData(storage);
 
 // get list of newest stories and like the latest one
-const stories = journey.getNewestStories();
-journey.likeStory(stories[0]);
-
+const stories = journeyData.getNewestStories();
+journeyData.likeStory(stories[0]);
 ```
 
 Available API methods.
 
 ```
-journey.getClosestPopularStories({ currentLocation, radius })
-journey.getClosestStories({ currentLocation, radius })
-journey.getNewestStories()
-journey.likeStory({ story: { id } })
-journey.deleteLikeStory({ story: { id } })
-journey.visitStory({ story: { id } })
-journey.deleteVisitStory({ story: { id } })
+journeyData.getClosestPopularStories({ currentLocation, radius })
+journeyData.getClosestStories({ currentLocation, radius })
+journeyData.getNewestStories()
+journeyData.likeStory({ story: { id } })
+journeyData.deleteLikeStory({ story: { id } })
+journeyData.visitStory({ story: { id } })
+journeyData.deleteVisitStory({ story: { id } })
+journeyData.getStory({ story: { id }});
 ```
 
 TODO: Use `RealmStorage`, migrations

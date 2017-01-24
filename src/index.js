@@ -2,7 +2,7 @@
 
 const controllers = require('./controller');
 
-class Journey {
+class JourneyData {
 
   constructor(storageDriver) {
     this._storage = storageDriver;
@@ -41,6 +41,6 @@ class Journey {
 }
 
 module.exports = {
-  Journey,
+  JourneyData,
   Storage: require('./storage'),
 };
