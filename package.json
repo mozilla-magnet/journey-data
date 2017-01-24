@@ -12,6 +12,7 @@
     "realm": "^0.15.4",
     "react-native": "^0.40.0",
     "knex": "^0.12.6",
+    "knex-postgis": "^0.2.0",
     "pg": "^6.1.2"
   },
   "devDependencies": {

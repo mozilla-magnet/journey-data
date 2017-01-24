@@ -12,8 +12,7 @@ exports.up = function(knex, Promise) {
     CREATE TABLE story (
       id                 SERIAL PRIMARY KEY,
       created_by_user_id INTEGER REFERENCES "user"(id),
-      time_created       TIMESTAMP WITHOUT TIME ZONE
-                          DEFAULT (now() AT TIME ZONE 'utc'),
+      time_created       BIGINT DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP(3)) * 1000,
       title              TEXT NOT NULL,
       description        TEXT,
       location           GEOGRAPHY(POINT, 4326),
