@@ -4,8 +4,7 @@ try {
   Realm = require('realm');
 } catch(e) {
   console.log('Realm not installed... RealmStorage unavailable');
-  module.exports = function() {};
-  return;
+  Realm = function() { throw new Error('Realm not installed (npm install --save realm)'); };
 }
 
 const { Story, User, Event }  = require('../model');
