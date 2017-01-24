@@ -1,11 +1,13 @@
 const connectionConfig = require('./knexfile');
-const path = require('path');
 
 let knex;
+let path;
 try {
+  path = require('path');
   knex = require('knex');
 } catch(e) {
-  knex = function() { throw new Error('Knex not installed as peer dependency'); };
+  knex = function() { throw new Error('Must be a node environment or Knex not installed as peer dependency'); };
+  path = {};
 }
 
 class PostgresStorage {
