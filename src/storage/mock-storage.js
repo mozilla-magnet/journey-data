@@ -4,7 +4,7 @@ const { Story, User } = require('../model');
 
 class MockStorage {
   fetchStory(id) {
-    return this.fetchStories().then(stories => stories[0]);
+    return this.fetchStories().then(stories => stories[id - 1]);
   }
 
   fetchNewestStories(limit) {
@@ -20,16 +20,18 @@ class MockStorage {
   }
 
   fetchStories(limit) {
+    const userModel = createModel(User, {
+      id: 1,
+      name: 'Dan Kitchener',
+      imageUri: '',
+      shortBio: 'A street art curator'
+    });
+
     return Promise.resolve([
       createModel(Story, {
         id: 1,
         url: '',
-        createdByUser: createModel(User, {
-          id: 1,
-          name: 'Dan Kitchener',
-          imageUri: '',
-          shortBio: 'A street art curator'
-        }),
+        createdByUser: userModel,
         timeCreated: 1485185482,
         title: 'Piece #1',
         description: '',
@@ -38,6 +40,22 @@ class MockStorage {
         longitude: -0.1011677,
         imageUri: resolveAssetSource(require('../mockdata/images/dank.jpg')).uri,
         audioUri: '',
+        fetchedTime: Date.now(),
+        liked: false,
+        visited: false,
+      }),
+      createModel(Story, {
+        id: 2,
+        url: '',
+        createdByUser: userModel,
+        timeCreated: 1485258799,
+        title: 'Piece #2',
+        description: '',
+        visits: 10902,
+        latitude: 51.5044484,
+        longitude: -0.1056524,
+        imageUri: resolveAssetSource(require('../mockdata/images/lowbros.jpg')).uri,
+        audiUri: '',
         fetchedTime: Date.now(),
         liked: false,
         visited: false,
