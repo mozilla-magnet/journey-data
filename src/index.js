@@ -41,6 +41,5 @@ class JourneyData {
 }
 
 module.exports = {
-  JourneyData,
-  createStorage: require('./storage'),
+  JourneyData
 };

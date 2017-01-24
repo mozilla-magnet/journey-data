@@ -9,11 +9,10 @@ driver then interprets the commands into a result.
 # Quick Start
 
 ```
-import { createStorage, JourneyData } from 'journey-data';
+import { JourneyData } from 'journey-data';
+import MockStorage from 'journey-data/src/storage/mock-storage';
 
-const storage = createStorage('MockStorage');
-
-const journeyData = new JourneyData(storage);
+const journeyData = new JourneyData(new MockStorage());
 
 // get list of newest stories and like the latest one
 const stories = journeyData.getNewestStories();
