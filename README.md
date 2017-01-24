@@ -9,9 +9,9 @@ driver then interprets the commands into a result.
 # Quick Start
 
 ```
-import { Storage, JourneyData } from 'journey-data';
+import { createStorage, JourneyData } from 'journey-data';
 
-const storage = new Storage.MockStorage();
+const storage = createStorage('MockStorage');
 
 const journeyData = new JourneyData(storage);
 
