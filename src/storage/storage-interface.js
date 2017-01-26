@@ -7,6 +7,7 @@ class StorageInterface {
   logEvent(event) {}
   hasVisitedStory(story) { return false; }
   fetchStory(id) { return false };
+  fetchUser(id) { return false };
 }
 
 module.exports = StorageInterface;

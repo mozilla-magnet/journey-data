@@ -8,7 +8,7 @@ driver then interprets the commands into a result.
 
 # Quick Start
 
-```
+```js
 import { JourneyData } from 'journey-data';
 import MockStorage from 'journey-data/src/storage/mock-storage';
 
@@ -21,7 +21,7 @@ journeyData.likeStory(stories[0]);
 
 Available API methods.
 
-```
+```js
 journeyData.getClosestPopularStories({ currentLocation, radius })
 journeyData.getClosestStories({ currentLocation, radius })
 journeyData.getNewestStories()
@@ -30,6 +30,7 @@ journeyData.deleteLikeStory({ id })
 journeyData.visitStory({ id })
 journeyData.deleteVisitStory({ id })
 journeyData.getStory({ id });
+journeyData.getUser({ id });
 ```
 
 TODO: Use `RealmStorage`, migrations
