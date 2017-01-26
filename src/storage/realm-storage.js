@@ -28,8 +28,7 @@ class RealmStorage {
   }
 
   fetchPopularStoriesInLocation(currentLocation, radius, limit) {
-    return
-      this.fetchNearestStories(currentLocation, radius, limit)
+    return this.fetchNearestStories(currentLocation, radius, limit)
         .then(results => results.sorted('visits'));
   }
 
@@ -82,12 +81,16 @@ class RealmStorage {
       switch(event.type) {
         case 'VISIT_STORY':
           this._realm.create('Story', { id: event.storyId, visited: true }, true);
+          break;
         case 'UNVISIT_STORY':
           this._realm.create('Story', { id: event.storyId, visited: false }, true);
+          break;
         case 'LIKE_STORY':
           this._realm.create('Story', { id: event.storyId, liked: true }, true);
+          break;
         case 'UNLIKE_STORY':
           this._realm.create('Story', { id: event.storyId, liked: false }, true);
+          break;
       }
     });
   }
