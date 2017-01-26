@@ -59,7 +59,23 @@ class MockStorage {
         fetchedTime: Date.now(),
         liked: false,
         visited: false,
-      })
+      }),
+      createModel(Story, {
+        id: 3,
+        url: '',
+        createdByUser: userModel,
+        timeCreated: 1485437665,
+        title: 'Piece #3',
+        description: '',
+        visits: 10902,
+        latitude: 51.525179,
+        longitude: -0.0775077,
+        imageUri: resolveAssetSource(require('../mockdata/images/stik.jpg')).uri,
+        audiUri: '',
+        fetchedTime: Date.now(),
+        liked: false,
+        visited: false,
+      }),
     ]);
   }
 
