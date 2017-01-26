@@ -23,7 +23,7 @@ class MockStorage {
     const userModel = createModel(User, {
       id: 1,
       name: 'Dan Kitchener',
-      imageUri: '',
+      imageUri: resolveAssetSource(require('../mockdata/images/dan-kitchener.jpg')).uri,
       shortBio: 'A street art curator'
     });
 
@@ -77,6 +77,15 @@ class MockStorage {
         visited: false,
       }),
     ]);
+  }
+
+  fetchUser(id) {
+    return Promise.resolve(createModel(User, {
+      id: id,
+      name: 'Dan Kitchener',
+      imageUri: resolveAssetSource(require('../mockdata/images/dan-kitchener.jpg')).uri,
+      shortBio: 'A street art curator'
+    }));
   }
 
   fetchEvents() { return []; }
