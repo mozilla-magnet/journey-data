@@ -5,6 +5,8 @@ const NewestStories = require('./newest-stories');
 const VisitStory = require('./visit-story');
 const Story = require('./story');
 const User = require('./user');
+const LogEvents = require('./log-events');
+const UpdateStoryState = require('./update-story-state');
 
 module.exports = {
   ClosestPopularStories,
@@ -14,4 +16,5 @@ module.exports = {
   VisitStory,
   Story,
   User,
+  LogEvents,
 };

@@ -1,5 +1,9 @@
+const Event = require('./event');
+const User = require('./user');
+const Story = require('./story');
+
 module.exports = {
-  Story: require('./story'),
-  User: require('./user'),
-  Event: require('./event'),
+  Story,
+  User,
+  Event
 };

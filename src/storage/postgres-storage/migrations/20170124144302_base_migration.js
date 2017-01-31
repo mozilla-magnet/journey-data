@@ -18,6 +18,7 @@ exports.up = function(knex, Promise) {
       location           GEOGRAPHY(POINT, 4326),
       image_uri          TEXT,
       audio_uri          TEXT,
+      visits             BIGINT DEFAULT 0,
       call_to_action     JSON NOT NULL
     );
   `;
@@ -28,16 +29,29 @@ exports.up = function(knex, Promise) {
 
   const createEventTable = `
     CREATE TABLE event (
-      uuid      UUID NOT NULL,
-      timestamp TIMESTAMP WITHOUT TIME ZONE
-                  DEFAULT (now() AT TIME ZONE 'utc'),
+      uuid      UUID UNIQUE NOT NULL,
+      timestamp BIGINT DEFAULT EXTRACT(EPOCH FROM CURRENT_TIMESTAMP(3)) * 1000,
       index_key TEXT,
+      type      TEXT,
       data      JSONB NOT NULL
     );
   `;
 
   const createIndexKeyIndex = `
     CREATE INDEX event_key_index ON event(index_key);
+  `;
+
+  const createBrinIndexTimestamp = `
+    CREATE INDEX event_time_index ON event USING brin (timestamp);
+  `;
+
+  const createViewCacheTable = `
+    CREATE TABLE view_cache (
+      view_id          TEXT NOT NULL PRIMARY KEY,
+      key              TEXT,
+      serialized_value TEXT,
+      last_updated_uuid UUID
+    );
   `;
 
   return Promise.resolve(knex.raw(createUserTable)
@@ -52,7 +66,13 @@ exports.up = function(knex, Promise) {
     })
     .then(() => {
       return knex.raw(createIndexKeyIndex);
-    }));
+    }))
+    .then(() => {
+      return knex.raw(createBrinIndexTimestamp);
+    })
+    .then(() => {
+      return knex.raw(createViewCacheTable);
+    });
 };
 
 exports.down = function(knex, Promise) {

@@ -1,10 +1,11 @@
 module.exports = class MapReducer {
 
-  constructor(iterable, mapFn, reduceFn) {
+  constructor(iterable, computedView) {
+    console.log(arguments);
     this.dataSource = iterable;
 
-    this._mapFn = mapFn;
-    this._reducerFn = reduceFn;
+    this._mapFn = computedView.map;
+    this._reducerFn = computedView.reduce;
 
     this.cachedMap = new Map();
   }
@@ -21,10 +22,13 @@ module.exports = class MapReducer {
             this.cachedMap.set(key, [ val ]);
           }
         }
-      } else {
+      } else if (keyVals && keyVals.key) {
         const { key, val } = keyVals;
         this.cachedMap.set(key, [ val ]);
       }
+
+      // Ignore if mapFn doesn't respond with an array of key vals, or a key val
+      // object
     }
 
     return this;

@@ -4,7 +4,7 @@ class StorageInterface {
   fetchPopularStoriesInLocation(currentLocation, radius, limit) { return []; }
   fetchStories(limit) { return []; }
   fetchEvents() { return []; }
-  logEvent(event) {}
+  logEvents(event) {}
   hasVisitedStory(story) { return false; }
   fetchStory(id) { return false };
   fetchUser(id) { return false };

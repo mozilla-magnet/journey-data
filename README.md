@@ -31,6 +31,7 @@ journeyData.visitStory({ id })
 journeyData.deleteVisitStory({ id })
 journeyData.getStory({ id });
 journeyData.getUser({ id });
+journeyData.logEvents([ { ...eventData }, ...events ]);
 ```
 
 TODO: Use `RealmStorage`, migrations

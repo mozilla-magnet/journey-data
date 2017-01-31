@@ -65,18 +65,12 @@ class RealmStorage {
     return this._realm.objects('Event');
   }
 
-  logEvent(event) {
-    const uuid = uuidv4();
-    const timestamp = Date.now();
-
+  logEvents(events) {
     this._realm.write(() => {
-      // Log an event - to be synced up to the server, and then updated the
-      // local state so we don't need to recompute values on the client
-      this._realm.create('Event', {
-        uuid,
-        timestamp,
-        data: JSON.stringify(event)
-      });
+      events.forEach((event) => {
+        // Log an event - to be synced up to the server, and then updated the
+        // local state so we don't need to recompute values on the client
+        this._realm.create('Event', event);
 
       switch(event.type) {
         case 'VISIT_STORY':

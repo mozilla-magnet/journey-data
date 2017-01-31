@@ -48,6 +48,12 @@ module.exports = function(knex) {
       });
   }
 
+  function getVisitCount(storyId) {
+    return knex('event')
+      .select('count')
+      .whereRaw('data = \'{"type":"VISIT_STORY","storyId": ?}\'', storyId);
+  }
+
   function getNewestStories(limit = 100) {
     return selectStory()
       .limit(limit)
@@ -67,9 +73,24 @@ module.exports = function(knex) {
       .then(response => response.map(mapFromDbResponseToModel));
   }
 
+  function getClosestPopularStories(location, radius, limit = 100) {
+    return selectStory()
+      .where(
+        st.dwithin(
+          'location',
+          st.makePoint(location.longitude, location.latitude),
+          radius
+        ))
+      .orderBy('visits', 'desc')
+      .limit(limit)
+      .then(response => response.map(mapFromDbResponseToModel));
+  }
+
   return {
     getNewestStories,
     getClosestStories,
+    getClosestPopularStories,
     getStory,
+    getVisitCount,
   };
 };

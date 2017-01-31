@@ -1,3 +1,4 @@
+const Event = require('./event');
 class Story {}
 
 Story.schema = {
@@ -18,6 +19,22 @@ Story.schema = {
     fetchedTime: 'int',
     liked: 'bool',
     visited: 'bool'
+  }
+};
+
+Story.computedViews = {
+  visits: {
+    map: function(record) {
+      console.log(record);
+      if (record.type === Event.type.VISIT_STORY && record.data && record.data.storyId) {
+        return { key: record.data.storyId, val: 1 };
+      }
+    },
+    reduce: function(key, values) {
+      return {
+        key,
+        val: values.reduce((acc, val) => acc + val) };
+    }
   }
 };
 
