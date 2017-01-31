@@ -21,6 +21,7 @@ module.exports = function(knex) {
       longitude: location.coordinates[1],
       imageUri: obj.image_uri,
       audioUri: obj.audio_uri,
+      visits: obj.visits,
       fetchedTime: Date.now()
     });
   }
