@@ -72,20 +72,18 @@ class RealmStorage {
         // local state so we don't need to recompute values on the client
         this._realm.create('Event', event);
 
-      switch(event.type) {
-        case 'VISIT_STORY':
-          this._realm.create('Story', { id: event.storyId, visited: true }, true);
-          break;
-        case 'UNVISIT_STORY':
-          this._realm.create('Story', { id: event.storyId, visited: false }, true);
-          break;
-        case 'LIKE_STORY':
-          this._realm.create('Story', { id: event.storyId, liked: true }, true);
-          break;
-        case 'UNLIKE_STORY':
-          this._realm.create('Story', { id: event.storyId, liked: false }, true);
-          break;
-      }
+        switch(event.data.type) {
+          case Event.type.VISIT_STORY:
+            this._realm.create('Story', { id: event.storyId, visited: true }, true);
+            return;
+          case Event.type.START_STORY:
+            this._realm.create('Story', { id: event.storyId, starred: true }, true);
+            return;
+          case Event.type.UNSTAR_STORY:
+            this._realm.create('Story', { id: event.storyId, starred: false }, true);
+            return;
+        }
+      });
     });
   }
 }

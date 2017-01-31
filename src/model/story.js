@@ -17,7 +17,7 @@ Story.schema = {
     imageUri: 'string',
     audioUri: 'string',
     fetchedTime: 'int',
-    liked: 'bool',
+    starred: 'bool',
     visited: 'bool'
   }
 };
