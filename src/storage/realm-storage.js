@@ -76,7 +76,7 @@ class RealmStorage {
           case Event.type.VISIT_STORY:
             this._realm.create('Story', { id: event.storyId, visited: true }, true);
             return;
-          case Event.type.START_STORY:
+          case Event.type.STAR_STORY:
             this._realm.create('Story', { id: event.storyId, starred: true }, true);
             return;
           case Event.type.UNSTAR_STORY:
