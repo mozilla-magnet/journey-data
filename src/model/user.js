@@ -6,10 +6,7 @@ User.schema = {
   primaryKey: 'id',
   properties: {
     id: 'int',
-    url: 'string',
-    name: 'string',
-    imageUri: 'string',
-    shortBio: 'string'
+    ftu: { type: 'bool', default: true },
   }
 };
 
